@@ -3,79 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BAKOME-Hub | Open Source Trading, AI & Cybersecurity</title>
+    <title>BAKOME-Hub | Global Open Source Platform</title>
     <style>
-        :root { --bg: #050510; --card: rgba(10,10,30,0.85); --green: #00ff88; --blue: #00aaff; --gold: #FFD700; --text: #ddd; --border: rgba(0,255,136,0.12); --radius: 14px; --shadow: 0 8px 32px rgba(0,255,136,0.08); }
+        :root {
+            --bg: #050510; --card: rgba(10,10,30,0.9); --green: #00ff88;
+            --blue: #00aaff; --gold: #FFD700; --text: #ddd;
+            --border: rgba(0,255,136,0.15); --radius: 14px;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', system-ui, sans-serif; }
-        .container { max-width: 1400px; margin: auto; padding: 20px; }
-        header { text-align: center; padding: 60px 20px 30px; }
-        header h1 { font-size: 3.2rem; background: linear-gradient(135deg, var(--green), #00ccff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .container { max-width: 1400px; margin: auto; padding: 15px; }
+
+        /* Header */
+        header { text-align: center; padding: 50px 20px 30px; }
+        header h1 { font-size: 3rem; background: linear-gradient(135deg, var(--green), #00ccff); -webkit-background-clip: text; background-clip: text; color: transparent; }
         header p { color: #888; font-size: 1.1rem; margin-top: 10px; }
-        .lang-switch { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
-        .lang-switch button { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 8px 16px; border-radius: 20px; cursor: pointer; font-size: 0.85rem; }
-        .lang-switch button.active { background: var(--gold); color: #000; border-color: var(--gold); }
+
+        /* Navigation */
         nav { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin: 20px 0 40px; }
-        nav button { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 12px 20px; border-radius: 25px; cursor: pointer; font-size: 0.9rem; transition: 0.3s; }
+        nav button { background: var(--card); border: 1px solid var(--border); color: var(--text); padding: 12px 20px; border-radius: 25px; cursor: pointer; font-size: 0.85rem; transition: 0.3s; }
         nav button:hover, nav button.active { background: var(--green); color: #000; border-color: var(--green); }
+
+        /* Sections */
         .section { display: none; }
         .section.active { display: block; }
+
+        /* Search */
+        .search-box { display: flex; justify-content: center; margin-bottom: 25px; }
+        .search-box input { width: 100%; max-width: 500px; padding: 14px 20px; border-radius: 30px; border: 1px solid var(--border); background: var(--card); color: var(--text); font-size: 1rem; }
+        .search-box input:focus { outline: none; border-color: var(--green); }
+
+        /* Cards Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 20px; }
         .card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; transition: 0.3s; }
-        .card:hover { border-color: var(--green); box-shadow: var(--shadow); transform: translateY(-3px); }
+        .card:hover { border-color: var(--green); box-shadow: 0 8px 32px rgba(0,255,136,0.1); transform: translateY(-3px); }
         .card h3 { color: var(--green); margin-bottom: 10px; font-size: 1.15rem; }
         .card p { color: #aaa; font-size: 0.88rem; margin-bottom: 14px; }
         .card a { color: var(--blue); text-decoration: none; font-weight: 600; }
         .badge { padding: 3px 10px; border-radius: 12px; font-size: 0.7rem; background: rgba(255,255,255,0.08); }
+
+        /* Wallet */
         .wallet-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; }
-        .wallet-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; word-break: break-all; text-align: center; }
+        .wallet-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px; text-align: center; word-break: break-all; }
         .wallet-card .crypto { color: var(--gold); font-weight: bold; margin-bottom: 8px; font-size: 1.1rem; }
         .wallet-card .addr { color: #aaa; font-size: 0.8rem; }
+
+        /* Footer */
         footer { text-align: center; padding: 30px; color: #555; font-size: 0.8rem; margin-top: 40px; border-top: 1px solid var(--border); }
+
+        /* Responsive */
+        @media (max-width: 600px) { header h1 { font-size: 2rem; } nav button { padding: 10px 14px; font-size: 0.75rem; } }
     </style>
 </head>
 <body>
 <div class="container">
     <header>
         <h1>🚀 BAKOME-Hub</h1>
-        <p>Open Source Ecosystem • AI • Trading • Cybersecurity • Blockchain</p>
-        <div class="lang-switch">
-            <button class="active" onclick="switchLang('en')">🇺🇸 EN</button>
-            <button onclick="switchLang('fr')">🇫🇷 FR</button>
-            <button onclick="switchLang('es')">🇪🇸 ES</button>
-            <button onclick="switchLang('zh')">🇨🇳 中文</button>
-        </div>
+        <p>Global Open Source Platform • AI • Trading • Cybersecurity • Blockchain • Grants • Freelance</p>
     </header>
+
     <nav>
-        <button class="active" onclick="switchTab('projects')">📦 Projects</button>
-        <button onclick="switchTab('ai')">🤖 AI Lab</button>
-        <button onclick="switchTab('wallets')">💰 Donate</button>
-        <button onclick="switchTab('grants')">🌍 Grants</button>
+        <button class="active" onclick="switchTab('projects')">📦 54 Projects</button>
+        <button onclick="switchTab('ai-lab')">🤖 AI Lab (50+)</button>
+        <button onclick="switchTab('market-data')">📊 Market Data</button>
+        <button onclick="switchTab('cyber')">🛡️ Cybersecurity</button>
+        <button onclick="switchTab('science')">🔬 Science</button>
+        <button onclick="switchTab('marketing')">📢 Marketing</button>
+        <button onclick="switchTab('health')">🏥 Health AI</button>
+        <button onclick="switchTab('video')">🎨 Video/Image</button>
+        <button onclick="switchTab('jobs')">💼 Job Scanners</button>
+        <button onclick="switchTab('grants')">🌍 50+ Grants</button>
         <button onclick="switchTab('brokers')">📈 Trading</button>
-        <button onclick="switchTab('freelance')">💼 Freelance</button>
-        <button onclick="switchTab('news')">📰 News</button>
+        <button onclick="switchTab('wallets')">💰 Donate</button>
+        <button onclick="switchTab('freelance')">💼 Freelance (50+)</button>
         <button onclick="switchTab('contact')">📬 Contact</button>
     </nav>
+
+    <!-- SEARCH -->
+    <div class="search-box">
+        <input type="text" id="searchInput" placeholder="🔍 Search 200+ tools, grants, brokers, AI models..." onkeyup="searchAll()">
+    </div>
 
     <!-- PROJECTS -->
     <div id="projects" class="section active"><h2 style="color:var(--green);margin-bottom:20px;">📦 Open Source Projects (54)</h2><div class="grid" id="projects-grid"></div></div>
 
     <!-- AI LAB -->
-    <div id="ai" class="section">
-        <h2 style="color:var(--green);margin-bottom:20px;">🤖 AI Lab — Open Source Assistants</h2>
-        <div class="grid">
-            <div class="card"><h3>🧠 DeepSeek</h3><p>AI reasoning & code generation.</p><a href="https://chat.deepseek.com" target="_blank">Open →</a></div>
-            <div class="card"><h3>🧠 Gemini</h3><p>Google AI for research & images.</p><a href="https://gemini.google.com" target="_blank">Open →</a></div>
-            <div class="card"><h3>🧠 ChatGPT</h3><p>OpenAI conversational AI.</p><a href="https://chat.openai.com" target="_blank">Open →</a></div>
-            <div class="card"><h3>🧠 Claude</h3><p>Anthropic AI assistant.</p><a href="https://claude.ai" target="_blank">Open →</a></div>
-            <div class="card"><h3>🧠 Mistral</h3><p>European open-weight AI.</p><a href="https://chat.mistral.ai" target="_blank">Open →</a></div>
-            <div class="card"><h3>🧠 Llama (Meta)</h3><p>Meta's open source LLM.</p><a href="https://www.meta.ai" target="_blank">Open →</a></div>
-            <div class="card"><h3>🧠 Qwen (Alibaba)</h3><p>Alibaba AI for text & code.</p><a href="https://tongyi.aliyun.com" target="_blank">Open →</a></div>
-            <div class="card"><h3>🧠 NotebookLM</h3><p>Google AI for documents.</p><a href="https://notebooklm.google.com" target="_blank">Open →</a></div>
-        </div>
-    </div>
+    <div id="ai-lab" class="section"><h2 style="color:var(--green);margin-bottom:20px;">🤖 AI Lab — LLMs, Agents, Research</h2><div class="grid" id="ai-lab-grid"></div></div>
 
-    <!-- DONATE -->
+    <!-- MARKET DATA -->
+    <div id="market-data" class="section"><h2 style="color:var(--green);margin-bottom:20px;">📊 Market Data & Trading Engines</h2><div class="grid" id="market-data-grid"></div></div>
+
+    <!-- CYBERSECURITY -->
+    <div id="cyber" class="section"><h2 style="color:var(--green);margin-bottom:20px;">🛡️ Cybersecurity Scanning Tools</h2><div class="grid" id="cyber-grid"></div></div>
+
+    <!-- SCIENCE -->
+    <div id="science" class="section"><h2 style="color:var(--green);margin-bottom:20px;">🔬 Scientific Research & Aggregators</h2><div class="grid" id="science-grid"></div></div>
+
+    <!-- MARKETING -->
+    <div id="marketing" class="section"><h2 style="color:var(--green);margin-bottom:20px;">📢 Marketing Automation</h2><div class="grid" id="marketing-grid"></div></div>
+
+    <!-- HEALTH AI -->
+    <div id="health" class="section"><h2 style="color:var(--green);margin-bottom:20px;">🏥 AI for Health & Virus Research</h2><div class="grid" id="health-grid"></div></div>
+
+    <!-- VIDEO/IMAGE -->
+    <div id="video" class="section"><h2 style="color:var(--green);margin-bottom:20px;">🎨 Video & Image Generation</h2><div class="grid" id="video-grid"></div></div>
+
+    <!-- JOBS -->
+    <div id="jobs" class="section"><h2 style="color:var(--green);margin-bottom:20px;">💼 Job Opportunity Scanners</h2><div class="grid" id="jobs-grid"></div></div>
+
+    <!-- GRANTS -->
+    <div id="grants" class="section"><h2 style="color:var(--gold);margin-bottom:20px;">🌍 Global Grants & Funding (50+)</h2><div class="grid" id="grants-grid"></div></div>
+
+    <!-- BROKERS -->
+    <div id="brokers" class="section"><h2 style="color:var(--green);margin-bottom:20px;">📈 Trading Partners & Referrals</h2><div class="grid" id="brokers-grid"></div></div>
+
+    <!-- WALLETS -->
     <div id="wallets" class="section">
         <h2 style="color:var(--gold);margin-bottom:20px;text-align:center;">💰 Support the Ecosystem</h2>
         <p style="text-align:center;color:#888;margin-bottom:25px;">Every contribution helps maintain these open source tools.</p>
@@ -88,35 +130,8 @@
         </div>
     </div>
 
-    <!-- GRANTS -->
-    <div id="grants" class="section"><h2 style="color:var(--green);margin-bottom:20px;">🌍 Global Grants & Funding</h2><div class="grid" id="grants-grid"></div></div>
-
-    <!-- BROKERS -->
-    <div id="brokers" class="section"><h2 style="color:var(--green);margin-bottom:20px;">📈 Trading Partners & Referrals</h2><div class="grid" id="brokers-grid"></div></div>
-
     <!-- FREELANCE -->
-    <div id="freelance" class="section">
-        <h2 style="color:var(--green);margin-bottom:20px;">💼 Freelance Services</h2>
-        <div class="grid">
-            <div class="card"><h3>🛡️ Cybersecurity Audits</h3><p>Supply chain, vulnerability scanning, penetration testing.</p></div>
-            <div class="card"><h3>💻 Custom Development</h3><p>Rust, C++, Python, MQL5, Pine Script.</p></div>
-            <div class="card"><h3>🐛 Debugging</h3><p>Compilation, memory leaks, optimization.</p></div>
-            <div class="card"><h3>🌐 Web & Apps</h3><p>Full-stack, bots, API integrations.</p></div>
-        </div>
-    </div>
-
-    <!-- NEWS -->
-    <div id="news" class="section">
-        <h2 style="color:var(--green);margin-bottom:20px;">📰 Tech & Security News</h2>
-        <div class="grid">
-            <div class="card"><h3>Hacker News</h3><p>Y Combinator tech news.</p><a href="https://news.ycombinator.com" target="_blank">Read →</a></div>
-            <div class="card"><h3>TechCrunch</h3><p>Startup & tech news.</p><a href="https://techcrunch.com" target="_blank">Read →</a></div>
-            <div class="card"><h3>BleepingComputer</h3><p>Cybersecurity news.</p><a href="https://www.bleepingcomputer.com" target="_blank">Read →</a></div>
-            <div class="card"><h3>The Hacker News</h3><p>Security & hacking news.</p><a href="https://thehackernews.com" target="_blank">Read →</a></div>
-            <div class="card"><h3>Ars Technica</h3><p>Deep tech news.</p><a href="https://arstechnica.com" target="_blank">Read →</a></div>
-            <div class="card"><h3>Wired</h3><p>Technology & culture.</p><a href="https://www.wired.com" target="_blank">Read →</a></div>
-        </div>
-    </div>
+    <div id="freelance" class="section"><h2 style="color:var(--green);margin-bottom:20px;">💼 Freelance Services (50+)</h2><div class="grid" id="freelance-grid"></div></div>
 
     <!-- CONTACT -->
     <div id="contact" class="section">
@@ -135,78 +150,96 @@
 </div>
 
 <script>
-    const projects = [
-        {name:"BAKOME-GitGuard",desc:"Git security: 50+ secrets, 30+ malware sigs, SOC2, SLSA 4.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-GitGuard"},
-        {name:"BAKOME-CardioRisk-Pro",desc:"Cardiovascular risk prediction via logistic regression.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-CardioRisk-Pro"},
-        {name:"BAKOME-Ethers",desc:"Ethereum library: Wallet, Provider, 11 chains, EIP-1559/4337.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Ethers"},
-        {name:"BAKOME-Dashboard",desc:"Live web dashboard for BAKOME AI Terminal.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME-Dashboard"},
-        {name:"BAKOME-AI-Terminal",desc:"EA MetaTrader 5: ICT, Kalman, neural AI for XAUUSD.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME-AI-Terminal"},
-        {name:"BAKOMEGoldScalper",desc:"Gold scalping EA for MetaTrader 5.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOMEGoldScalper"},
-        {name:"BAKOME-Trading-Bot",desc:"Multi-market trading bot.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Trading-Bot"},
-        {name:"BAKOME-Unified-Responder",desc:"Unified AI responder for multiple platforms.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Unified-Responder"},
-        {name:"BAKOME-MailAI-Guard",desc:"AI email guard: cybersecurity, NLP, Wikipedia/arXiv.",lang:"C++",url:"https://github.com/BAKOME-Hub/BAKOME-MailAI-Guard"},
-        {name:"BAKOME-QuantBot-AI",desc:"Quantitative trading bot with AI predictions.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-QuantBot-AI"},
-        {name:"BAKOME-Crypto-Quant-Engine",desc:"Crypto quant: MoE 256 experts, multi-exchange.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Crypto-Quant-Engine"},
-        {name:"BAKOME-HighFlyer-Quant-Engine",desc:"High-frequency quant engine, MoE 256 experts.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-HighFlyer-Quant-Engine"},
-        {name:"BAKOME-SupplyChain-Sentinel",desc:"Supply chain security: 7 pillars, SBOM, Merkle Tree.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-SupplyChain-Sentinel"},
-        {name:"BAKOME-CodeMapper",desc:"Code analyzer: multi-language, dead code, cycles.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-CodeMapper"},
-        {name:"BAKOME-Pro-Signal",desc:"TradingView: ATR expansion, volume spike, dual EMA.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME-Pro-Signal"},
-        {name:"BAKOME-Genesis-Indicator-PINE",desc:"TradingView: SMC/ICT/PA, Order Blocks, FVG.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME-Genesis-Indicator-PINE"},
-        {name:"BAKOME-Genesis",desc:"Quantum terminal: 21 modules, AI, DOM, thinkScript.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Genesis"},
-        {name:"BAKOME-Prodigy-Terminal",desc:"Terminal quantique: 25 modules, thinkScript, options.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Prodigy-Terminal"},
-        {name:"BAKOME-Quantum-Terminal",desc:"Quantum terminal: DOM, Footprint, 28-pair scanner.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Quantum-Terminal"},
-        {name:"BAKOME_AI_Terminal_v3",desc:"AI Terminal v3 for MetaTrader 5.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME_AI_Terminal_v3"},
-        {name:"BAKOME_ChatOS",desc:"Chat OS with AI integration.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_ChatOS"},
-        {name:"BAKOME_Recaller",desc:"Memory recall system for AI.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Recaller"},
-        {name:"BAKOME_Ultimate_Telegram_Bot",desc:"Ultimate Telegram bot with AI.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME_Ultimate_Telegram_Bot"},
-        {name:"BAKOME_Rust_Discord_Bot",desc:"Ultra-fast Discord bot in Rust.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Rust_Discord_Bot"},
-        {name:"BAKOME_ICT_Institutional",desc:"ICT Institutional trading indicator.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME_ICT_Institutional"},
-        {name:"BAKOME_Hyperchain_Guard",desc:"Hyperchain security guard.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Hyperchain_Guard"},
-        {name:"BAKOME_FISCO_Guard",desc:"FISCO BCOS security guard.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_FISCO_Guard"},
-        {name:"BAKOME_CKB_Guardian",desc:"Nervos CKB security guardian.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_CKB_Guardian"},
-        {name:"BAKOME_HUNTER_MT5",desc:"TradingView indicator: LSMA, Heikin Ashi, ATR.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME_HUNTER_MT5"},
-        {name:"alipay_analyzer",desc:"Alipay portfolio analyzer.",lang:"Rust",url:"https://github.com/BAKOME-Hub/alipay_analyzer"},
-        {name:"wechat_pay_analyzer",desc:"WeChat Pay portfolio analyzer.",lang:"Rust",url:"https://github.com/BAKOME-Hub/wechat_pay_analyzer"},
-        {name:"BAKOME_Conflux_Guard",desc:"Conflux blockchain security guard.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Conflux_Guard"},
-        {name:"bakome-signal-pro-x",desc:"Signal Pro X for trading.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/bakome-signal-pro-x"},
-        {name:"BAKOME_SIGNAL_PRO_V3",desc:"Signal Pro V3 for MetaTrader.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME_SIGNAL_PRO_V3"},
-        {name:"BAKOME_Candles_V3_MT5",desc:"Candles V3 for MetaTrader 5.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME_Candles_V3_MT5"},
-        {name:"BAKOME_Pro_Scalp",desc:"Professional scalping indicator.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME_Pro_Scalp"},
-        {name:"BAKOME_Bitcoin_EA_Pro_MT5",desc:"Bitcoin EA Pro for MetaTrader 5.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME_Bitcoin_EA_Pro_MT5"},
-        {name:"BAKOME_BTC_Engine",desc:"Bitcoin trading engine.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_BTC_Engine"},
-        {name:"BakomeBandiaEA",desc:"Bandia EA for MetaTrader.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BakomeBandiaEA"},
-        {name:"BAKOME_Local_AI_Studio",desc:"Local AI studio for development.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Local_AI_Studio"},
-        {name:"BAKOMEAIStudioV2",desc:"AI Studio V2 with enhanced features.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOMEAIStudioV2"},
-        {name:"BAKOME_Sentinel_AI",desc:"Sentinel AI for security monitoring.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Sentinel_AI"},
-        {name:"BakomeTrinityEA",desc:"Trinity EA for MetaTrader.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BakomeTrinityEA"},
-        {name:"gold_bakome",desc:"Gold trading algorithm.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/gold_bakome"},
-        {name:"BAKOMEPythonGoldScalper",desc:"Gold scalper in Python.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOMEPythonGoldScalper"},
-        {name:"BAKOME_Python_Gold_Scalper",desc:"Python gold scalping bot.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME_Python_Gold_Scalper"},
-        {name:"BAKOME_Discord_Ultimate_Assistant_v3",desc:"Discord AI assistant V3.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Discord_Ultimate_Assistant_v3"},
-        {name:"Bakome_-bot_discord",desc:"Discord bot for community.",lang:"Rust",url:"https://github.com/BAKOME-Hub/Bakome_-bot_discord"},
-        {name:"demo-repository",desc:"Demo repository for testing.",lang:"Rust",url:"https://github.com/BAKOME-Hub/demo-repository"},
-        {name:"BAKOME_reddit_telegram_bot",desc:"Reddit-Telegram bridge bot.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME_reddit_telegram_bot"},
-        {name:"BAKOME_ZeroKnowledge_Backup",desc:"Zero-knowledge backup system.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_ZeroKnowledge_Backup"},
-        {name:"BAKOME_2FA_Trade_Gateway",desc:"2FA secure trading gateway.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_2FA_Trade_Gateway"},
-        {name:"BAKOME_Network_Scanner",desc:"Network security scanner.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Network_Scanner"},
-        {name:"BAKOME_SIGNAL_BOT",desc:"Signal bot for trading alerts.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME_SIGNAL_BOT"}
-    ];
-
-    const grants = [
-        {name:"Linux Foundation (OpenSSF)",desc:"$12.5M Alpha-Omega fund.",url:"https://openssf.org/"},
-        {name:"Sovereign Tech Fund",desc:"€50K-€300K for open source.",url:"https://sovereign.tech/"},
-        {name:"NLnet Foundation",desc:"€5K-€50K per project.",url:"https://nlnet.nl/foundation/"},
-        {name:"GitHub Sponsors",desc:"$40M+ paid to developers.",url:"https://github.com/sponsors"},
-        {name:"Drips Network",desc:"Streaming crypto donations.",url:"https://www.drips.network/"},
-        {name:"Protocol Labs",desc:"$5K-$200K for open source.",url:"https://protocol.ai/"},
-        {name:"Mozilla (MOSS)",desc:"Foundational Technology track.",url:"https://www.mozilla.org/moss/"},
-        {name:"UNICEF Innovation Fund",desc:"Up to $100K, no equity.",url:"https://www.unicef.org/innovation/innovation-fund"},
-        {name:"Gates Foundation",desc:"Open access & research infra.",url:"https://www.gatesfoundation.org/"},
-        {name:"Google OSS Programs",desc:"Summer of Code, OSS-Fuzz, rewards.",url:"https://opensource.google/"},
-        {name:"Ethereum Foundation ESP",desc:"Infrastructure & public goods.",url:"https://esp.ethereum.foundation/"},
-        {name:"CZI Essential OSS",desc:"$50K-$250K for essential tools.",url:"https://chanzuckerberg.com/oss/"},
-        {name:"Open Technology Fund",desc:"$10K-$900K for open tech.",url:"https://www.opentech.fund/"},
-        {name:"NumFOCUS",desc:"$2K-$10K for scientific OSS.",url:"https://numfocus.org/"},
-        {name:"Rust Foundation",desc:"Grants for Rust ecosystem.",url:"https://foundation.rust-lang.org/"},
-        {name:"Gitcoin",desc:"Web3 quadratic funding.",url:"https://www.gitcoin.co/"},
-        {name:"IssueHunt",desc:"Bounties for open source issues.",url:"https://iss
+    // ============ COMPLETE DATA ============
+    const ALL_DATA = {
+        projects: [
+            {name:"BAKOME-GitGuard",desc:"Git security scanner: 50+ secrets, 30+ malware sigs, SOC2, SLSA 4.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-GitGuard"},
+            {name:"BAKOME-Ethers",desc:"Ethereum library: Wallet, Provider, 11 chains, EIP-1559/4337.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Ethers"},
+            {name:"BAKOME-SupplyChain-Sentinel",desc:"Supply chain security: 7 pillars, SBOM, Merkle Tree.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-SupplyChain-Sentinel"},
+            {name:"BAKOME-CodeMapper",desc:"Multi-language code analyzer: dead code, cycles, 2200+ lines.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-CodeMapper"},
+            {name:"BAKOME-Genesis",desc:"Quantum terminal: 21 modules, AI, DOM, thinkScript.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Genesis"},
+            {name:"BAKOME-MailAI-Guard",desc:"AI email guard: cybersecurity, NLP, Wikipedia/arXiv.",lang:"C++",url:"https://github.com/BAKOME-Hub/BAKOME-MailAI-Guard"},
+            {name:"BAKOME-Crypto-Quant-Engine",desc:"Crypto quant: MoE 256 experts, ETH/SOL/BNB/XRP/DOGE/AVAX.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Crypto-Quant-Engine"},
+            {name:"BAKOME-HighFlyer-Quant-Engine",desc:"High-frequency quant engine, MoE 256 experts.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-HighFlyer-Quant-Engine"},
+            {name:"BAKOME-CardioRisk-Pro",desc:"Cardiovascular risk prediction via logistic regression.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-CardioRisk-Pro"},
+            {name:"BAKOME-Dashboard",desc:"Live web dashboard for BAKOME AI Terminal.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME-Dashboard"},
+            {name:"BAKOME-AI-Terminal",desc:"EA MetaTrader 5: ICT, Kalman, neural AI for XAUUSD.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME-AI-Terminal"},
+            {name:"BAKOMEGoldScalper",desc:"Gold scalping EA for MetaTrader 5.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOMEGoldScalper"},
+            {name:"BAKOME-QuantBot-AI",desc:"Quantitative trading bot with AI predictions.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-QuantBot-AI"},
+            {name:"BAKOME-Unified-Responder",desc:"Unified AI responder for multiple platforms.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Unified-Responder"},
+            {name:"BAKOME-Trading-Bot",desc:"Multi-market trading bot.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Trading-Bot"},
+            {name:"BAKOME-Pro-Signal",desc:"TradingView: ATR expansion, volume spike, dual EMA.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME-Pro-Signal"},
+            {name:"BAKOME-Genesis-Indicator-PINE",desc:"TradingView: SMC/ICT/PA, Order Blocks, FVG.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME-Genesis-Indicator-PINE"},
+            {name:"BAKOME-Prodigy-Terminal",desc:"Terminal quantique: 25 modules, thinkScript, options.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Prodigy-Terminal"},
+            {name:"BAKOME-Quantum-Terminal",desc:"Quantum terminal: DOM, Footprint, 28-pair scanner.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME-Quantum-Terminal"},
+            {name:"BAKOME_MQL5_Compiler",desc:"Rust→MQL5 transpiler: backtest, ICT/SMC, indicators.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_MQL5_Compiler"},
+            {name:"BAKOME_AI_Terminal_v3",desc:"AI Terminal v3 for MetaTrader 5.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME_AI_Terminal_v3"},
+            {name:"BAKOME_ChatOS",desc:"Chat OS with AI integration.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_ChatOS"},
+            {name:"BAKOME_Recaller",desc:"Memory recall system for AI.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Recaller"},
+            {name:"BAKOME_Ultimate_Telegram_Bot",desc:"Ultimate Telegram bot with AI.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME_Ultimate_Telegram_Bot"},
+            {name:"BAKOME_Rust_Discord_Bot",desc:"Ultra-fast Discord bot in Rust.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Rust_Discord_Bot"},
+            {name:"BAKOME_ICT_Institutional",desc:"ICT Institutional trading indicator.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME_ICT_Institutional"},
+            {name:"BAKOME_Hyperchain_Guard",desc:"Hyperchain security guard.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Hyperchain_Guard"},
+            {name:"BAKOME_FISCO_Guard",desc:"FISCO BCOS security guard.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_FISCO_Guard"},
+            {name:"BAKOME_CKB_Guardian",desc:"Nervos CKB security guardian.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_CKB_Guardian"},
+            {name:"BAKOME_HUNTER_MT5",desc:"TradingView: LSMA, Heikin Ashi, ATR.",lang:"Pine Script",url:"https://github.com/BAKOME-Hub/BAKOME_HUNTER_MT5"},
+            {name:"alipay_analyzer",desc:"Alipay portfolio analyzer.",lang:"Rust",url:"https://github.com/BAKOME-Hub/alipay_analyzer"},
+            {name:"wechat_pay_analyzer",desc:"WeChat Pay portfolio analyzer.",lang:"Rust",url:"https://github.com/BAKOME-Hub/wechat_pay_analyzer"},
+            {name:"BAKOME_Conflux_Guard",desc:"Conflux blockchain security guard.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Conflux_Guard"},
+            {name:"BAKOME_SIGNAL_PRO_V3",desc:"Signal Pro V3 for MetaTrader.",lang:"MQL5",url:"https://github.com/BAKOME-Hub/BAKOME_SIGNAL_PRO_V3"},
+            {name:"BAKOME_BTC_Engine",desc:"Bitcoin trading engine.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_BTC_Engine"},
+            {name:"BAKOME_Local_AI_Studio",desc:"Local AI studio for development.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Local_AI_Studio"},
+            {name:"BAKOME_Sentinel_AI",desc:"Sentinel AI for security monitoring.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Sentinel_AI"},
+            {name:"BAKOME_ZeroKnowledge_Backup",desc:"Zero-knowledge backup system.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_ZeroKnowledge_Backup"},
+            {name:"BAKOME_2FA_Trade_Gateway",desc:"2FA secure trading gateway.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_2FA_Trade_Gateway"},
+            {name:"BAKOME_Network_Scanner",desc:"Network security scanner.",lang:"Rust",url:"https://github.com/BAKOME-Hub/BAKOME_Network_Scanner"},
+            {name:"BAKOME_SIGNAL_BOT",desc:"Signal bot for trading alerts.",lang:"Python",url:"https://github.com/BAKOME-Hub/BAKOME_SIGNAL_BOT"}
+        ],
+        aiLab: [
+            {name:"DeepSeek",desc:"AI reasoning & code generation.",url:"https://chat.deepseek.com"},
+            {name:"Gemini",desc:"Google AI for research & images.",url:"https://gemini.google.com"},
+            {name:"ChatGPT",desc:"OpenAI conversational AI.",url:"https://chat.openai.com"},
+            {name:"Claude",desc:"Anthropic AI assistant.",url:"https://claude.ai"},
+            {name:"Mistral",desc:"European open-weight AI.",url:"https://chat.mistral.ai"},
+            {name:"Llama (Meta)",desc:"Meta's open source LLM.",url:"https://www.meta.ai"},
+            {name:"Qwen (Alibaba)",desc:"Alibaba AI for text & code.",url:"https://tongyi.aliyun.com"},
+            {name:"NotebookLM",desc:"Google AI for documents.",url:"https://notebooklm.google.com"},
+            {name:"Ollama",desc:"Run LLMs locally (LLaMA, Mistral, Phi).",url:"https://ollama.ai"},
+            {name:"llama.cpp",desc:"Pure C/C++ inference for LLMs.",url:"https://github.com/ggerganov/llama.cpp"},
+            {name:"GPT4All",desc:"Run LLMs on any device.",url:"https://gpt4all.io"},
+            {name:"PrivateGPT",desc:"Interact with documents using LLMs.",url:"https://privategpt.dev"},
+            {name:"LangChain",desc:"Framework for building LLM apps.",url:"https://www.langchain.com"},
+            {name:"AutoGPT",desc:"Autonomous AI task-solving agent.",url:"https://github.com/Significant-Gravitas/AutoGPT"},
+            {name:"CrewAI",desc:"Multi-agent orchestration framework.",url:"https://www.crewai.com"}
+        ],
+        marketData: [
+            {name:"FinWorld",desc:"All-in-one platform for financial AI.",url:"https://finworld.ai"},
+            {name:"OpenBB Terminal",desc:"Investment research with 100+ data sources.",url:"https://openbb.co"},
+            {name:"Freqtrade",desc:"Crypto algorithmic trading bot.",url:"https://www.freqtrade.io"},
+            {name:"Jesse",desc:"Crypto trading bot for backtesting.",url:"https://jesse.trade"},
+            {name:"Backtrader",desc:"Strategy backtesting framework.",url:"https://www.backtrader.com"},
+            {name:"CCXT",desc:"Unified API for 100+ crypto exchanges.",url:"https://ccxt.com"},
+            {name:"QuantConnect Lean",desc:"Algorithmic trading engine.",url:"https://www.quantconnect.com/lean"},
+            {name:"Ta-Lib",desc:"Technical analysis library (200+ indicators).",url:"https://ta-lib.org"},
+            {name:"VectorBT",desc:"Backtesting with advanced analytics.",url:"https://vectorbt.dev"}
+        ],
+        cyber: [
+            {name:"OpenVAS",desc:"Vulnerability scanning and management.",url:"https://openvas.org"},
+            {name:"ClamAV",desc:"Open-source antivirus engine.",url:"https://www.clamav.net"},
+            {name:"Lynis",desc:"Security auditing and hardening.",url:"https://cisofy.com/lynis/"},
+            {name:"OSSEC",desc:"Host-based intrusion detection.",url:"https://www.ossec.net"},
+            {name:"Wazuh",desc:"Security monitoring and SIEM.",url:"https://wazuh.com"},
+            {name:"Snort",desc:"Network intrusion detection.",url:"https://www.snort.org"},
+            {name:"Suricata",desc:"High-performance network threat detection.",url:"https://suricata.io"},
+            {name:"Metasploit",desc:"Penetration testing framework.",url:"https://www.metasploit.com"},
+            {name:"Nmap",desc:"Network discovery and security scanning.",url:"https://nmap.org"}
+        ],
+        science: [
+            {name:"arXiv.org",desc:"Open-access scientific papers.",url:"https://arxiv.org"},
+            {name:"Wikipedia",desc:"Free encyclopedia (downloadable datasets).",url:"https://www.wikipedia.org"},
+            {name:"Common Crawl",desc:"Web-scale text corpus for research.",url:"https://commoncrawl.org"},
+            {name:"PubMed Central",desc:"Free biomedical literature.",url:"https://www.ncbi.nlm.nih.gov/pmc/"},
+            {name:"Semantic Scholar",desc:"AI-powered academic search.",url:"https://www.semanticscholar.org"},
+            {name:"Google Scholar",desc:"Academic literature search.",url:"https://scholar.google.com"}
+        ],
+        mark
